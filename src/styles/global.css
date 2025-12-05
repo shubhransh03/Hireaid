@@ -1,0 +1,144 @@
+:root{
+  --bg:#f6f9fc;
+  --card:#ffffff;
+  --muted:#7b8794;
+  --accent:#3b82f6;
+  --danger:#ef4444;
+  --radius:10px;
+  --shadow: 0 6px 18px rgba(50,50,93,0.06);
+  --gap:16px;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* your custom overrides */
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  background:linear-gradient(90deg,#fff,#f7fbff);
+  box-shadow:0 1px 0 rgba(20,20,40,0.03);
+}
+.brand{font-weight:700}
+.actions{display:flex;gap:12px;align-items:center}
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:var(--card);
+  cursor:pointer;
+}
+.btn.primary{background:var(--accent);color:#fff;border:0}
+.btn.danger{background:var(--danger);color:#fff;border:0}
+.avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#e6eefc;font-weight:600}
+
+/* Layout */
+.layout{display:flex;gap:var(--gap);padding:20px}
+.left-col{flex:1;display:flex;flex-direction:column;gap:var(--gap)}
+.right-col{width:320px;display:flex;flex-direction:column;gap:12px}
+
+/* Video panel */
+.video-panel .video-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:12px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.video-top{display:flex;justify-content:space-between;align-items:center}
+.candidate-meta{display:flex;flex-direction:column}
+.candidate-name{font-weight:700}
+.candidate-sub{font-size:12px;color:var(--muted)}
+.video-badge{font-size:12px;color:var(--muted)}
+.video-placeholder{
+  background:#0f1724;
+  color:#fff;
+  height:260px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+/* Chat area */
+.chat-area{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:12px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.chat-header{display:flex;justify-content:space-between;align-items:center}
+.tabs{display:flex;gap:8px}
+.tab{background:transparent;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+.tab.active{background:#eef6ff;font-weight:600}
+.messages{min-height:120px;max-height:220px;overflow:auto;padding:8px;display:flex;flex-direction:column;gap:8px}
+.message{padding:10px;border-radius:8px;background:#f3f7ff}
+.message.system{background:#eaf7ff;color:#042a4b;font-weight:500}
+.composer{display:flex;gap:8px;align-items:center}
+.composer input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.08)}
+.send{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+
+/* Sidebar */
+.sidebar .panel{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.sidebar .panel h3{margin:0 0 8px 0}
+.sidebar .panel p{margin:0 0 12px 0;color:var(--muted)}
+.panel.meta{padding:12px}
+
+
+
+
+
+/* FOR SOUND WAVEFORM */
+
+/* tiny waveform animation used by the sidebar */
+.waveform { display:inline-flex; align-items:flex-end; gap:4px; }
+
+.waveform .bar {
+  width: 8px;
+  height: 8px;               /* base height; animation will alter it */
+  border-radius: 2px;
+  transform-origin: center bottom;
+  animation: waveform 0.9s ease-in-out infinite;
+}
+
+/* subtle variance for a more organic feel */
+.waveform .bar:nth-child(1) { height: 6px; }
+.waveform .bar:nth-child(2) { height: 10px; }
+.waveform .bar:nth-child(3) { height: 7px; }
+.waveform .bar:nth-child(4) { height: 12px; }
+.waveform .bar:nth-child(5) { height: 8px; }
+
+/* the animation grows/shrinks height via scaleY */
+@keyframes waveform {
+  0%   { transform: scaleY(0.45); }
+  25%  { transform: scaleY(1.35); }
+  50%  { transform: scaleY(0.6); }
+  75%  { transform: scaleY(1.0); }
+  100% { transform: scaleY(0.45); }
+}
